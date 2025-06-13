@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
 int  main()
@@ -21,6 +21,10 @@ int  main()
         cout <<"13- Nombre parfait"<<endl;
         cout <<"14- Nombres premiers compris entre 1 et n"<<endl;
         cout <<"15- Nombres premiers ou parfait de 1 à n"<<endl;
+        cout <<"16- Nombres amis"<<endl;
+        cout <<"17- Affichage, somme et  produit d'une suite de  nombre"<<endl;
+        cout <<"18- Meme que le 17 mais avec O/N"<<endl;
+        cout <<"19- Suite croissante de nombre"<<endl;
         cout <<"0 Pour quitter" <<endl;
         cout <<"Entrer votre choix "<<endl;
         cin >> choix;
@@ -257,17 +261,108 @@ int  main()
                             {
                                 if  (j%i==0)
                                 cpp++;
+                            }
+                            for (int i=1;i<j; i++)
+                            {
+                                if  (j%i==0)
                                 somme+=i;
                             }
                         if (cpp==2)
-                        {cout <<j <<"\t";compteur_nb++ ;}
+                        {cout <<j <<" premier\t";compteur_nb++ ;}
                         if (somme==j)
-                         {cout<<j <<"\t"<<endl; compteur_nbp++;}
+                         {cout<<j <<" parfait\t"; compteur_nbp++;}
                  }cout <<endl;
                  if (compteur_nb==0)
                 cout <<"Aucun nombre premier dans la liste "<<endl;
                 if (compteur_nbp==0)
                 cout <<"Aucun nombre parfait dans la liste" <<endl;
+        }break;
+        case 16:
+        {
+            int n,m;
+            cout <<"Entrer 2 entiers"<<endl;
+            cin >>m;cin>>n;
+            int somme_m=0, somme_n=0;
+            for(int i=2;i<m;i++)
+            {
+                if(m%i==0)
+                somme_m+=i;
+            }
+            for (int i=2;i<n;i++)
+            {
+                if(n%i==0)
+                somme_n+=i;
+            }
+            if(somme_m==n && somme_n==m)
+                cout <<m <<" et "<<n<<" sont amis"<<endl;
+            else
+                cout <<m <<" et "<<n<<" ne  sont pas  amis"<<endl;
+        }break;
+        case 17:
+        {
+                float n, somme=0, produit=1;
+                cout<<"Entrer une suite de reels de O pour la fin de liste "<<endl;
+                cin >>n;
+                vector<float> tab;
+                while (n!=0)
+                {
+                    tab.push_back(n);
+                    somme+=n;
+                    produit*=n;
+                    cin >>n;
+                    
+                    
+                }
+                cout<<"Affichage des nombres saisis"<<endl;
+                for (int i=0;i<tab.size();i++)
+                  cout <<tab[i]<<"\t";
+                cout <<endl;
+                cout << "La somme de ses nombres vaut "<<somme<< " et le produit vaut "<<produit<<endl;
+        }break;
+        case 18:
+        {
+                float n, somme=0, produit=1;
+                vector<float> tab;
+                char choix;
+                cout <<"voulez-vous saisir un nombre"<<endl;
+                cin >>choix ;
+                while (choix!= 'N' && choix!='n')
+                {
+                    
+                    cout<<"Saisissez le nombre "<<endl;
+                    cin >>n;
+                    tab.push_back(n);
+                    somme+=n;
+                    produit*=n;
+                    cout <<"voulez-vous saisir un nombre"<<endl;
+                    cin >>choix ;
+                }
+                
+                cout<<"Affichage des nombres saisis"<<endl;
+                for (int i=0;i<tab.size();i++)
+                  cout <<tab[i]<<"\t";
+                cout <<endl;
+                cout << "La somme de ses nombres vaut "<<somme<< " et le produit vaut "<<produit<<endl;
+        }break;
+        case 19:
+        {
+            cout <<"Entrer une serie de nombres et 0 pour terminer la saisie" <<endl;
+                int n; int m; bool verif ;
+                 cin >>n;
+                    m=n;
+                while (n!=0){
+                    cin >>n;
+                    if (m>n)
+                        {cout <<"heeeggfhghj" ;   
+                        verif=false;}
+                    
+                    m=n;
+                    
+                }
+                if (verif=false)
+                     cout<<"La liste est décroissante"<<endl;
+                else 
+                     cout <<"La liste est croissante"<<endl;
         }break;
         default:
             break;
